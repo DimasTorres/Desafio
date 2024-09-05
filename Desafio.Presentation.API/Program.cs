@@ -1,8 +1,10 @@
+using Desafio.Core.Application.Mapper;
 using Desafio.Presentation.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddAutoMapper(typeof(MapperFactory));
 builder.Services.AddControllers();
 
 //Configure Database

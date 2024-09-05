@@ -1,4 +1,5 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 
 namespace Desafio.Presentation.API.Extensions;

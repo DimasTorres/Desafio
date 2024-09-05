@@ -6,6 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>e6620124-8cdf-492b-a4cb-933427083b26</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DocumentationFile>Desafio.Presentation.Api.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,12 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Desafio.Core.Application\Desafio.Core.Application.csproj" />
-    <ProjectReference Include="..\Desafio.Core.Service\Desafio.Core.Service.csproj" />
     <ProjectReference Include="..\Desafio.Infrastructure.Persistence\Desafio.Infrastructure.Persistence.csproj" />
   </ItemGroup>
 

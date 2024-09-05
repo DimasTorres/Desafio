@@ -1,9 +1,9 @@
-﻿using Desafio.Core.Domain.Common;
+﻿using Desafio.Core.Application.Interfaces.Services;
+using Desafio.Core.Domain.Common;
 using Desafio.Core.Domain.Entities;
-using Desafio.Core.Service.Interfaces;
 using Desafio.Infrastructure.Persistence.Interfaces.Base;
 
-namespace Desafio.Core.Service.Services;
+namespace Desafio.Core.Application.Services;
 
 public class OrderItemService : IOrderItemService
 {

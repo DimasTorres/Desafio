@@ -2,7 +2,7 @@
 using Desafio.Core.Application.Contracts.Order.Response;
 using Desafio.Core.Domain.Common;
 
-namespace Desafio.Core.Application.Interfaces;
+namespace Desafio.Core.Application.Interfaces.Applications;
 
 public interface IOrderApplication
 {

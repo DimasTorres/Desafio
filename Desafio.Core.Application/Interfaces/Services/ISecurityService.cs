@@ -1,6 +1,6 @@
 ﻿using Desafio.Core.Domain.Entities;
 
-namespace Desafio.Core.Service.Interfaces;
+namespace Desafio.Core.Application.Interfaces.Services;
 
 public interface ISecurityService
 {

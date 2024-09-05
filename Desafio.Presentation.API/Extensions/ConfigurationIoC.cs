@@ -1,5 +1,7 @@
-﻿using Desafio.Core.Service.Interfaces;
-using Desafio.Core.Service.Services;
+﻿using Desafio.Core.Application.Applications;
+using Desafio.Core.Application.Interfaces.Applications;
+using Desafio.Core.Application.Interfaces.Services;
+using Desafio.Core.Application.Services;
 using Desafio.Infrastructure.Persistence.Interfaces;
 using Desafio.Infrastructure.Persistence.Interfaces.Base;
 using Desafio.Infrastructure.Persistence.Repositories;
@@ -10,11 +12,10 @@ namespace Desafio.Presentation.API.Extensions;
 public static class ConfigurationIoC
 {
     public static void ConfigureIoC(this IServiceCollection services)
-    {
-        
+    {        
         //Unit Of Work
         services.AddScoped<IUnitOfWork, UnitOfWork>();
-        /*
+        
         //Security
         services.AddScoped<ISecurityService, SecurityService>();
         services.AddScoped<ITokenManager, TokenManager>();
@@ -23,7 +24,6 @@ public static class ConfigurationIoC
         services.AddScoped<IOrderApplication, OrderApplication>();
         services.AddScoped<IProductApplication, ProductApplication>();
         services.AddScoped<IUserApplication, UserApplication>();
-          */
 
         //Add Services
         services.AddScoped<IOrderService, OrderService>();

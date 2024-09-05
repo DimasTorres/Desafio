@@ -16,6 +16,7 @@ public class CreateOrderRequestValidator : AbstractValidator<CreateOrderRequest>
                .NotNull();
 
         RuleFor(x => x.ClientName)
+            .Length(3, 60)
             .NotEmpty()
             .NotNull();
 
