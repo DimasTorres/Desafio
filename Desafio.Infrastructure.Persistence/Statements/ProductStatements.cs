@@ -8,11 +8,11 @@ public static class ProductStatements
               ,[Value]
               ,[IsDeleted]
               ,[CreatedAt]
-          FROM [dbo].[Product]
+          FROM [dbo].[Products]
           WHERE IsDeleted = 0 ";
 
     public const string SQL_INSERT =
-        @"INSERT INTO [dbo].[Product]
+        @"INSERT INTO [dbo].[Products]
            ([ProductName]
            ,[Value]
            ,[IsDeleted]
@@ -22,16 +22,16 @@ public static class ProductStatements
             ,@Value
             ,@IsDeleted
             ,@CreatedAt);
-        SELECT IDENT_CURRENT([dbo].[OrderItem]) AS ID ";
+        SELECT IDENT_CURRENT([dbo].[Products]) AS ID ";
 
     public const string SQL_UPDATE =
-        @"UPDATE [dbo].[Product]
+        @"UPDATE [dbo].[Products]
            SET [ProductName] = @ProductName
               ,[Value] = @Value
              WHERE Id = @Id";
 
     public const string SQL_DELETE =
-        @"UPDATE [dbo].[Product]
+        @"UPDATE [dbo].[Products]
            SET[IsDeleted] = 1
          WHERE Id = @Id";
 }

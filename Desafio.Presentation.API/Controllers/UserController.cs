@@ -7,7 +7,7 @@ namespace Desafio.Presentation.API.Controllers;
 
 [Route("api/user")]
 [ApiController]
-[Authorize]
+//[Authorize]
 public class UserController : ControllerBase
 {
     private readonly IUserApplication _application;

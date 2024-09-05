@@ -11,12 +11,12 @@ public static class OrderStatements
               ,o.IsPaid
               ,u.Id
               ,u.Name
-          FROM [dbo].[Order] o
-          INNER JOIN [dbo].[User] u ON o.UserId = u.id
+          FROM [dbo].[Orders] o
+          INNER JOIN [dbo].[Users] u ON o.UserId = u.id
           WHERE o.IsDeleted = 0 ";
 
     public const string SQL_INSERT =
-        @"INSERT INTO [dbo].[Order]
+        @"INSERT INTO [dbo].[Orders]
            ([ClientName]
            ,[ClientEmail]
            ,[IsPaid]
@@ -30,5 +30,5 @@ public static class OrderStatements
             ,@UserId
             ,@IsDeleted
             ,@CreatedAt);
-        SELECT IDENT_CURRENT([dbo].[Order]) AS ID ";
+        SELECT IDENT_CURRENT([dbo].[Orders]) AS ID ";
 }
