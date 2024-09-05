@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Desafio.Presentation.API</name>
+    </assembly>
+    <members>
+        <member name="M:Desafio.Presentation.API.Controllers.OrderController.GetById(System.Int32)">
+            <summary>
+            Get Order by Id
+            </summary>
+            <param name="id"></param>
+            <returns>Order</returns>
+        </member>
+        <member name="M:Desafio.Presentation.API.Controllers.OrderController.GetAll">
+            <summary>
+            Get Orders
+            </summary>
+            <param name="orderId"></param>
+            <param name="clientId"></param>
+            <param name="userId"></param>
+            <returns>List of Order</returns>
+        </member>
+        <member name="M:Desafio.Presentation.API.Controllers.OrderController.Create(Desafio.Core.Application.Contracts.Order.Request.CreateOrderRequest)">
+            <summary>
+            Create Order
+            </summary>
+            <param name="request"></param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:Desafio.Presentation.API.Controllers.ProductController.GetById(System.Int32)">
+            <summary>
+            Get Product by Id
+            </summary>
+            <param name="id"></param>
+            <returns>Product</returns>
+        </member>
+        <member name="M:Desafio.Presentation.API.Controllers.ProductController.GetAll">
+            <summary>
+            Get Products
+            </summary>
+            <param name="id"></param>
+            <param name="description"></param>
+            <returns>List of Products</returns>
+        </member>
+        <member name="M:Desafio.Presentation.API.Controllers.ProductController.Create(Desafio.Core.Application.Contracts.Product.Request.CreateProductRequest)">
+            <summary>
+            Create Products
+            </summary>
+            <param name="request"></param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:Desafio.Presentation.API.Controllers.ProductController.Update(Desafio.Core.Application.Contracts.Product.Request.UpdateProductRequest)">
+            <summary>
+            Update Product
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Desafio.Presentation.API.Controllers.ProductController.Delete(System.Int32)">
+            <summary>
+            Delete Product
+            </summary>
+            <param name="id"></param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:Desafio.Presentation.API.Controllers.UserController.AuthenticateUser(Desafio.Core.Application.Contracts.User.Request.AuthRequest)">
+            <summary>
+            Authentication
+            </summary>
+            <param name="request"></param>
+            <returns>Token</returns>
+        </member>
+        <member name="M:Desafio.Presentation.API.Controllers.UserController.GetById(System.Int32)">
+            <summary>
+            Get User by Id
+            </summary>
+            <param name="id"></param>
+            <returns>User</returns>
+        </member>
+        <member name="M:Desafio.Presentation.API.Controllers.UserController.GetAll">
+            <summary>
+            Get Users
+            </summary>
+            <param name="id"></param>
+            <param name="name"></param>
+            <returns>List of User</returns>
+        </member>
+        <member name="M:Desafio.Presentation.API.Controllers.UserController.Create(Desafio.Core.Application.Contracts.User.Request.CreateUserRequest)">
+            <summary>
+            Create User
+            </summary>
+            <param name="request"></param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:Desafio.Presentation.API.Controllers.UserController.Update(Desafio.Core.Application.Contracts.User.Request.UpdateUserRequest)">
+            <summary>
+            Update User
+            </summary>
+            <param name="request"></param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:Desafio.Presentation.API.Controllers.UserController.Delete(System.Int32)">
+            <summary>
+            Delete User
+            </summary>
+            <param name="id"></param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:Desafio.Presentation.API.Extensions.ConfigurationOpenApi.CreateInfoForApiVersion(System.String,System.Boolean)">
+            <summary>
+            Informações da API
+            </summary>
+        </member>
+    </members>
+</doc>
