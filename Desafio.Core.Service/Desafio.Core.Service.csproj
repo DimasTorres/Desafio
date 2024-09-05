@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Desafio.Core.Domain\Desafio.Core.Domain.csproj" />
+    <ProjectReference Include="..\Desafio.Infrastructure.Persistence\Desafio.Infrastructure.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>

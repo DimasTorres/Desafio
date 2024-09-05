@@ -9,12 +9,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.8" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="8.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Desafio.Core.Application\Desafio.Core.Application.csproj" />
+    <ProjectReference Include="..\Desafio.Core.Service\Desafio.Core.Service.csproj" />
+    <ProjectReference Include="..\Desafio.Infrastructure.Persistence\Desafio.Infrastructure.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
