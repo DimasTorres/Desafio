@@ -5,8 +5,8 @@ namespace Desafio.Core.Application.Interfaces.Services;
 
 public interface IUserService
 {
-    Task<Response<bool>> AuthenticationAsync(string password, UserEntity user);
-    Task<Response> CreateAsync(UserEntity request);
+    Task<Response<bool>> AuthenticationAsync(string password, string passwordHash);
+    Task<Response<int>> CreateAsync(UserEntity request);
     Task<Response> UpdateAsync(UserEntity request);
     Task<Response<UserEntity>> GetByLoginAsync(string login);
     Task<Response> DeleteAsync(int id);

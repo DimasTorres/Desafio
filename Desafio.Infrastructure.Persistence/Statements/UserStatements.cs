@@ -28,7 +28,7 @@ public static class UserStatements
            ,@Email
            ,@IsDeleted
            ,@CreatedAt);
-        SELECT IDENT_CURRENT([dbo].[Users]) AS ID ";
+        SELECT @@IDENTITY FROM [dbo].[Users] AS ID ";
 
     public const string SQL_UPDATE =
         @"UPDATE [dbo].[Users]

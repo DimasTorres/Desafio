@@ -22,7 +22,7 @@ public static class ProductStatements
             ,@Value
             ,@IsDeleted
             ,@CreatedAt);
-        SELECT IDENT_CURRENT([dbo].[Products]) AS ID ";
+        SELECT @@IDENTITY FROM [dbo].[Products] AS ID ";
 
     public const string SQL_UPDATE =
         @"UPDATE [dbo].[Products]

@@ -4,7 +4,7 @@ namespace Desafio.Infrastructure.Persistence.Interfaces;
 
 public interface IUserRepository
 {
-    Task CreateAsync(UserEntity request);
+    Task<int> CreateAsync(UserEntity request);
     Task UpdateAsync(UserEntity request);
     Task<UserEntity> GetByLoginAsync(string login);
     Task DeleteAsync(int id);

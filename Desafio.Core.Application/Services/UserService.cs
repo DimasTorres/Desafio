@@ -16,23 +16,23 @@ public class UserService : IUserService
         _securityService = securityService;
     }
 
-    public async Task<Response<bool>> AuthenticationAsync(string password, UserEntity user)
+    public async Task<Response<bool>> AuthenticationAsync(string password, string passwordHash)
     {
-        var result = await _securityService.VerifyPassword(password, user);
+        var result = await _securityService.VerifyPassword(password, passwordHash);
         return new Response<bool>(result);
     }
 
-    public async Task<Response> CreateAsync(UserEntity request)
+    public async Task<Response<int>> CreateAsync(UserEntity request)
     {
-        var response = new Response<UserEntity>();
+        var response = new Response<int>();
         _repository.BeginTransaction();
 
         try
         {
-            request.PasswordHash = await _securityService.EncryptPassword(request.PasswordHash);
-
-            await _repository.UserRepository.CreateAsync(request);
+           int idResult = await _repository.UserRepository.CreateAsync(request);
             _repository.CommitTransaction();
+
+            response.Data = idResult;
 
             return response;
         }
@@ -135,7 +135,6 @@ public class UserService : IUserService
 
         try
         {
-            request.PasswordHash = await _securityService.EncryptPassword(request.PasswordHash);
             await _repository.UserRepository.UpdateAsync(request);
 
             _repository.CommitTransaction();

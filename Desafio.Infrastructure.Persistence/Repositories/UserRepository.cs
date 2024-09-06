@@ -14,20 +14,21 @@ public class UserRepository : IUserRepository
         _dbConnector = dbConnector;
     }
 
-    public async Task CreateAsync(UserEntity request)
+    public async Task<int> CreateAsync(UserEntity request)
     {
         var sql = UserStatements.SQL_INSERT;
+        var result = await _dbConnector.dbConnection.ExecuteScalarAsync(sql,
+           new
+           {
+               Name = request.Name,
+               Email = request.Email,
+               Login = request.Login,
+               PasswordHash = request.PasswordHash,
+               IsDeleted = false,
+               CreatedAt = DateTime.UtcNow
+           }, _dbConnector.dbTransaction);
 
-        await _dbConnector.dbConnection.ExecuteAsync(sql,
-            new
-            {
-                Name = request.Name,
-                Email = request.Email,
-                Login = request.Login,
-                PasswordHash = request.PasswordHash,
-                IsDeleted = false,
-                CreatedAt = DateTime.UtcNow
-            }, _dbConnector.dbTransaction);
+        return Convert.ToInt32(result);
     }
 
     public async Task DeleteAsync(int id)
@@ -44,8 +45,7 @@ public class UserRepository : IUserRepository
     public async Task<List<UserEntity>> GetAllAsync()
     {
         var sql = $"{UserStatements.SQL_BASE}";
-        var result = await _dbConnector.dbConnection.QueryAsync<UserEntity>(sql,
-             _dbConnector.dbTransaction);
+        var result = await _dbConnector.dbConnection.QueryAsync<UserEntity>(sql,null, _dbConnector.dbTransaction);
 
         return result.ToList();
     }

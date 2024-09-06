@@ -9,7 +9,6 @@ public class AuthRequestValidator : AbstractValidator<AuthRequest>
     {
         RuleFor(x => x.Login)
            .NotEmpty()
-           .NotNull()
            .Length(3, 20);
 
         RuleFor(m => m.Password)

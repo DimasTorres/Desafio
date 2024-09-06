@@ -14,11 +14,11 @@ public class ProductRepository : IProductRepository
         _dbConnector = dbConnector;
     }
 
-    public async Task CreateAsync(ProductEntity request)
+    public async Task<int> CreateAsync(ProductEntity request)
     {
         var sql = ProductStatements.SQL_INSERT;
 
-        await _dbConnector.dbConnection.ExecuteAsync(sql,
+        var result = await _dbConnector.dbConnection.ExecuteScalarAsync(sql,
             new
             {
                 ProductName = request.ProductName,
@@ -26,6 +26,8 @@ public class ProductRepository : IProductRepository
                 IsDeleted = false,
                 CreatedAt = DateTime.UtcNow
             }, _dbConnector.dbTransaction);
+
+        return Convert.ToInt32(result);
     }
     public async Task UpdateAsync(ProductEntity request)
     {
@@ -55,8 +57,7 @@ public class ProductRepository : IProductRepository
     {
         var sql = $"{ProductStatements.SQL_BASE}";
 
-        var result = await _dbConnector.dbConnection.QueryAsync<ProductEntity>(sql,
-            _dbConnector.dbTransaction);
+        var result = await _dbConnector.dbConnection.QueryAsync<ProductEntity>(sql, null, _dbConnector.dbTransaction);
 
         return result.ToList();
     }

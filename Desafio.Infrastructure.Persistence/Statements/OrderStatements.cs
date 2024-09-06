@@ -30,5 +30,5 @@ public static class OrderStatements
             ,@UserId
             ,@IsDeleted
             ,@CreatedAt);
-        SELECT IDENT_CURRENT([dbo].[Orders]) AS ID ";
+        SELECT @@IDENTITY FROM [dbo].[Orders] AS ID ";
 }

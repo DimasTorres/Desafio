@@ -29,5 +29,5 @@ public static class OrderItemStatements
             ,@Amount
             ,@IsDeleted
             ,@CreatedAt);
-        SELECT IDENT_CURRENT([dbo].[OrderItems]) AS ID ";
+        SELECT @@IDENTITY FROM [dbo].[OrderItems] AS ID ";
 }

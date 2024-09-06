@@ -7,6 +7,7 @@ using Desafio.Core.Application.Contracts.Order.Response;
 using Desafio.Core.Application.Validators;
 using Desafio.Core.Domain.Common;
 using Desafio.Core.Domain.Entities;
+using Desafio.Core.Application.Interfaces.Strategies;
 
 namespace Desafio.Core.Application.Applications;
 
@@ -16,6 +17,7 @@ public class OrderApplication : IOrderApplication
     private readonly IUserService _userService;
     private readonly IProductService _productService;
     private readonly IOrderItemService _orderItemService;
+    private readonly ITotalAmountStrategy _totalAmountStrategy;
     private readonly IMapper _mapper;
 
     public OrderApplication(
@@ -23,21 +25,23 @@ public class OrderApplication : IOrderApplication
         IUserService userService,
         IProductService productService,
         IOrderItemService orderItemService,
+        ITotalAmountStrategy totalAmountStrategy,
         IMapper mapper)
     {
         _orderService = orderService;
         _userService = userService;
         _productService = productService;
         _orderItemService = orderItemService;
+        _totalAmountStrategy = totalAmountStrategy;
         _mapper = mapper;
     }
 
-    public async Task<Response> CreateAsync(CreateOrderRequest request)
+    public async Task<Response<CreateOrderResponse>> CreateAsync(CreateOrderRequest request)
     {
         var validate = new CreateOrderRequestValidator();
         var validateErrors = validate.Validate(request).GetErrors();
         if (validateErrors.ReportErrors.Any())
-            return validateErrors;
+            return Response.Unprocessable<CreateOrderResponse>(validateErrors.ReportErrors);
 
         try
         {
@@ -45,8 +49,8 @@ public class OrderApplication : IOrderApplication
             List<OrderItemEntity> orderItems = new();
             foreach (var item in request.OrderItems)
             {
-                var itemExist = await _productService.GetByIdAsync(item.ProductId);
-                if (itemExist.Data.Id > 0)
+                var exists = await _productService.GetByIdAsync(item.ProductId);
+                if (exists.Data is null || exists.Data.Id == 0)
                 {
                     reportErrors.Add(ReportError.Create($"Product {item.ProductId} not found."));
                 }
@@ -60,7 +64,7 @@ public class OrderApplication : IOrderApplication
 
             if (reportErrors.Any())
             {
-                return Response.Unprocessable(reportErrors);
+                return Response.Unprocessable<CreateOrderResponse>(reportErrors);
             }
 
             var orderEntity = new OrderEntity()
@@ -72,12 +76,15 @@ public class OrderApplication : IOrderApplication
                 OrderItems = orderItems
             };
 
-            return await _orderService.CreateAsync(orderEntity);
+            var response = await _orderService.CreateAsync(orderEntity);
+            CreateOrderResponse responseOk = new() { Id = response.Data };
+
+            return Response.OK(responseOk);
         }
         catch (Exception e)
         {
             var responseError = ReportError.Create(e.Message);
-            return Response.Unprocessable(responseError);
+            return Response.Unprocessable<CreateOrderResponse>(responseError);
         }
     }
     public async Task<Response<List<OrderResponse>>> GetAllAsync()
@@ -90,13 +97,13 @@ public class OrderApplication : IOrderApplication
             if (result.ReportErrors.Any())
                 return Response.Unprocessable<List<OrderResponse>>(result.ReportErrors);
 
-            foreach (var item in result.Data)
+            var response = _mapper.Map<List<OrderResponse>>(result.Data);
+
+            foreach (var order in response)
             {
-                var orderItems = await _orderItemService.GetItemByOrderIdAsync(item.Id);
-                item.OrderItems = orderItems.Data;
+                order.TotalAmount = _totalAmountStrategy.CalculateTotalAmount(order.OrderItems);
             }
 
-            var response = _mapper.Map<List<OrderResponse>>(result.Data);
 
             return Response.OK(response);
         }
@@ -115,6 +122,11 @@ public class OrderApplication : IOrderApplication
 
             var response = _mapper.Map<OrderResponse>(result.Data);
 
+            //Aqui poderia ser utilizado o CalculateTotalAmount(List<OrderItemResponse> orderItems)
+            //ao invés do CalculateTotalAmount(List<OrderItemEntity> orderItems)
+            //porém deixei assim implementado para exemplificar a utilização do Design Pattern Strategy
+            response.TotalAmount = _totalAmountStrategy.CalculateTotalAmount(result.Data.OrderItems); ;
+
             return Response.OK(response);
         }
         catch (Exception e)
@@ -122,5 +134,5 @@ public class OrderApplication : IOrderApplication
             var responseError = ReportError.Create(e.Message);
             return Response.Unprocessable(responseError);
         }
-    }
+    }    
 }

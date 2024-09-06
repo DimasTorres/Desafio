@@ -6,7 +6,7 @@ namespace Desafio.Core.Application.Interfaces.Applications;
 
 public interface IProductApplication
 {
-    Task<Response> CreateAsync(CreateProductRequest request);
+    Task<Response<CreateProductResponse>> CreateAsync(CreateProductRequest request);
     Task<Response> UpdateAsync(UpdateProductRequest request);
     Task<Response> DeleteAsync(int id);
     Task<Response> GetByIdAsync(int id);

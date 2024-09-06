@@ -9,7 +9,6 @@ public class UpdateProductRequestValidator : AbstractValidator<UpdateProductRequ
     {
         RuleFor(x => x.ProductName)
                 .NotEmpty()
-                .NotNull()
                 .Length(3, 20);
     }
 }
