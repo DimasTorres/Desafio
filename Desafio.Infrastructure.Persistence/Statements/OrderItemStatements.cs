@@ -11,13 +11,13 @@ public static class OrderItemStatements
 	        ,p.[Id]
 	        ,p.[ProductName]
 	        ,p.[Value]
-        FROM [dbo].[OrderItem] oi
-        INNER JOIN [dbo].[Order] o ON o.Id = oi.OrderId
-        INNER JOIN [dbo].[Product] p ON p.Id = oi.ProductId
+        FROM [dbo].[OrderItems] oi
+        INNER JOIN [dbo].[Orders] o ON o.Id = oi.OrderId
+        INNER JOIN [dbo].[Products] p ON p.Id = oi.ProductId
         WHERE oi.IsDeleted = 0 AND p.IsDeleted = 0 ";
 
     public const string SQL_INSERT =
-        @"INSERT INTO [dbo].[OrderItem]
+        @"INSERT INTO [dbo].[OrderItems]
            ([OrderId]
            ,[ProductId]
            ,[Amount]
@@ -29,5 +29,5 @@ public static class OrderItemStatements
             ,@Amount
             ,@IsDeleted
             ,@CreatedAt);
-        SELECT IDENT_CURRENT([dbo].[OrderItem]) AS ID ";
+        SELECT @@IDENTITY FROM [dbo].[OrderItems] AS ID ";
 }

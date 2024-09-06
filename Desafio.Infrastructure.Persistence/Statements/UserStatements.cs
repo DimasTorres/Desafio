@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Desafio.Infrastructure.Persistence.Statements;
+﻿namespace Desafio.Infrastructure.Persistence.Statements;
 
 public static class UserStatements
 {
@@ -16,11 +10,11 @@ public static class UserStatements
               ,[Email]
               ,[IsDeleted]
               ,[CreatedAt]
-          FROM [dbo].[User]
+          FROM [dbo].[Users]
           WHERE IsDeleted = 0 ";
 
     public const string SQL_INSERT =
-        @"INSERT INTO [dbo].[User]
+        @"INSERT INTO [dbo].[Users]
            ([Name]
            ,[Login]
            ,[PasswordHash]
@@ -34,10 +28,10 @@ public static class UserStatements
            ,@Email
            ,@IsDeleted
            ,@CreatedAt);
-        SELECT IDENT_CURRENT([dbo].[OrderItem]) AS ID ";
+        SELECT @@IDENTITY FROM [dbo].[Users] AS ID ";
 
     public const string SQL_UPDATE =
-        @"UPDATE [dbo].[User]
+        @"UPDATE [dbo].[Users]
            SET [Name] = @Name
               ,[Login] = @Login
               ,[PasswordHash] = @PasswordHash
@@ -45,10 +39,10 @@ public static class UserStatements
             WHERE Id = @Id";
 
     public const string SQL_EXIST_BY_LOGIN =
-         @"SELECT 1 FROM [dbo].[User] WHERE IsDeleted = 0 AND Login Like @Login";
+         @"SELECT 1 FROM [dbo].[Users] WHERE IsDeleted = 0 AND Login Like @Login";
 
     public const string SQL_DELETE =
-        @"UPDATE [dbo].[User]
+        @"UPDATE [dbo].[Users]
            SET[IsDeleted] = 1
          WHERE Id = @Id";
 }

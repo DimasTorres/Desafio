@@ -1,7 +1,9 @@
 ﻿using Desafio.Core.Application.Applications;
 using Desafio.Core.Application.Interfaces.Applications;
 using Desafio.Core.Application.Interfaces.Services;
+using Desafio.Core.Application.Interfaces.Strategies;
 using Desafio.Core.Application.Services;
+using Desafio.Core.Application.Strategies;
 using Desafio.Infrastructure.Persistence.Interfaces;
 using Desafio.Infrastructure.Persistence.Interfaces.Base;
 using Desafio.Infrastructure.Persistence.Repositories;
@@ -24,6 +26,9 @@ public static class ConfigurationIoC
         services.AddScoped<IOrderApplication, OrderApplication>();
         services.AddScoped<IProductApplication, ProductApplication>();
         services.AddScoped<IUserApplication, UserApplication>();
+
+        //Add Strategies
+        services.AddTransient<ITotalAmountStrategy, DefaultTotalAmountStrategy>();
 
         //Add Services
         services.AddScoped<IOrderService, OrderService>();

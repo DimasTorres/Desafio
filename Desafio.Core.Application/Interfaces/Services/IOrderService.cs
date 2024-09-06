@@ -5,7 +5,7 @@ namespace Desafio.Core.Application.Interfaces.Services;
 
 public interface IOrderService
 {
-    Task<Response> CreateAsync(OrderEntity request);
+    Task<Response<int>> CreateAsync(OrderEntity request);
     Task<Response<List<OrderEntity>>> GetAllAsync();
     Task<Response<OrderEntity>> GetByIdAsync(int id);
 }

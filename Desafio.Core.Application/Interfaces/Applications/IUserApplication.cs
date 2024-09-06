@@ -7,7 +7,7 @@ namespace Desafio.Core.Application.Interfaces.Applications;
 public interface IUserApplication
 {
     Task<Response<AuthResponse>> AutheticationAsync(AuthRequest request);
-    Task<Response> CreateAsync(CreateUserRequest request);
+    Task<Response<CreateUserResponse>> CreateAsync(CreateUserRequest request);
     Task<Response> UpdateAsync(UpdateUserRequest request);
     Task<Response> DeleteAsync(int id);
     Task<Response> GetByIdAsync(int id);

@@ -17,7 +17,7 @@ public class OrderRepository : IOrderRepository
         _orderItemRepository = orderItemRepository;
     }
 
-    public async Task CreateAsync(OrderEntity request)
+    public async Task<int> CreateAsync(OrderEntity request)
     {
         var sql = OrderStatements.SQL_INSERT;
 
@@ -40,6 +40,8 @@ public class OrderRepository : IOrderRepository
                 await _orderItemRepository.CreateItemAsync(item);
             }
         }
+
+        return Convert.ToInt32(result);
     }
 
     public async Task<List<OrderEntity>> GetAllAsync()
@@ -50,7 +52,7 @@ public class OrderRepository : IOrderRepository
             {
                 order.User = user;
                 return order;
-            }, _dbConnector.dbTransaction);
+            }, null, _dbConnector.dbTransaction);
 
         return result.ToList();
     }

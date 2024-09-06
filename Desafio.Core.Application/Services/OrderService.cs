@@ -14,16 +14,18 @@ public class OrderService : IOrderService
         _repository = repository;
     }
 
-    public async Task<Response> CreateAsync(OrderEntity request)
+    public async Task<Response<int>> CreateAsync(OrderEntity request)
     {
-        var response = new Response();
+        var response = new Response<int>();
         _repository.BeginTransaction();
 
         try
         {
-            await _repository.OrderRepository.CreateAsync(request);
+            int idResult = await _repository.OrderRepository.CreateAsync(request);
 
             _repository.CommitTransaction();
+            response.Data = idResult;
+
             return response;
         }
         catch (Exception ex)
@@ -42,6 +44,12 @@ public class OrderService : IOrderService
         try
         {
             var result = await _repository.OrderRepository.GetAllAsync();
+
+            foreach (var item in result) 
+            {
+                item.OrderItems = await _repository.OrderItemRepository.GetItemByOrderIdAsync(item.Id);
+            }                        
+            
             response.Data = result;
 
             _repository.CommitTransaction();

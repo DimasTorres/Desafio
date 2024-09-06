@@ -15,14 +15,17 @@ public class ProductService : IProductService
         _repository = repository;
     }
 
-    public async Task<Response> CreateAsync(ProductEntity request)
+    public async Task<Response<int>> CreateAsync(ProductEntity request)
     {
-        var response = new Response<ProductEntity>();
+        var response = new Response<int>();
         _repository.BeginTransaction();
         try
         {
-            await _repository.ProductRepository.CreateAsync(request);
+            int idResult = await _repository.ProductRepository.CreateAsync(request);
             _repository.CommitTransaction();
+            
+            response.Data = idResult;
+            
             return response;
         }
         catch (Exception ex)

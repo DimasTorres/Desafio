@@ -9,12 +9,10 @@ public class CreateUserRequestValidator : AbstractValidator<CreateUserRequest>
     {
         RuleFor(x => x.Name)
             .NotEmpty()
-            .NotNull()
             .Length(3, 150);
 
         RuleFor(x => x.Login)
             .NotEmpty()
-            .NotNull()
             .Length(3, 20);
 
         RuleFor(m => m.Password)
@@ -30,7 +28,6 @@ public class CreateUserRequestValidator : AbstractValidator<CreateUserRequest>
 
         RuleFor(x => x.Email)
             .EmailAddress(FluentValidation.Validators.EmailValidationMode.AspNetCoreCompatible)
-            .NotEmpty()
-            .NotNull();
+            .NotEmpty();
     }
 }

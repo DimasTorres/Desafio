@@ -38,7 +38,7 @@ public class UserApplication : IUserApplication
             if (user.ReportErrors.Any())
                 return Response.Unprocessable<AuthResponse>(user.ReportErrors);
 
-            var isAuthenticated = await _userService.AuthenticationAsync(request.Password, user.Data);
+            var isAuthenticated = await _userService.AuthenticationAsync(request.Password, user.Data.PasswordHash);
             if (!isAuthenticated.Data)
                 return Response.Unprocessable<AuthResponse>(ReportError.Create("Password is incorrect."));
 
@@ -52,25 +52,28 @@ public class UserApplication : IUserApplication
         }
     }
 
-    public async Task<Response> CreateAsync(CreateUserRequest request)
+    public async Task<Response<CreateUserResponse>> CreateAsync(CreateUserRequest request)
     {
         var validate = new CreateUserRequestValidator();
         var validateErrors = validate.Validate(request).GetErrors();
         if (validateErrors.ReportErrors.Any())
-            return validateErrors;
+            return Response.Unprocessable<CreateUserResponse>(validateErrors.ReportErrors);
 
         try
         {
             var userEntity = _mapper.Map<UserEntity>(request);
 
-            await _userService.CreateAsync(userEntity);
+            userEntity.PasswordHash = await _securityService.EncryptPassword(request.Password);
 
-            return Response.OK();
+            var response = await _userService.CreateAsync(userEntity);
+            CreateUserResponse responseOk = new() { Id = response.Data};
+
+            return Response.OK(responseOk);
         }
         catch (Exception e)
         {
             var responseError = ReportError.Create(e.Message);
-            return Response.Unprocessable(responseError);
+            return Response.Unprocessable<CreateUserResponse>(responseError);
         }
     }
 
@@ -78,12 +81,6 @@ public class UserApplication : IUserApplication
     {
         try
         {
-            var exists = await _userService.GetByIdAsync(id);
-            if (exists.Data.Id > 0)
-            {
-                return Response.Unprocessable(ReportError.Create($"User {id} not found."));
-            }
-
             return await _userService.DeleteAsync(id);
         }
         catch (Exception e)
@@ -135,12 +132,6 @@ public class UserApplication : IUserApplication
 
         try
         {
-            var exists = await _userService.GetByIdAsync(request.Id);
-            if (exists.Data.Id > 0)
-            {
-                return Response.Unprocessable(ReportError.Create($"User {request.Id} not found."));
-            }
-
             var userEntity = _mapper.Map<UserEntity>(request);
 
             userEntity.PasswordHash = await _securityService.EncryptPassword(request.Password);

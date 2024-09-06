@@ -21,24 +21,26 @@ public class ProductApplication : IProductApplication
         _mapper = mapper;
     }
 
-    public async Task<Response> CreateAsync(CreateProductRequest request)
+    public async Task<Response<CreateProductResponse>> CreateAsync(CreateProductRequest request)
     {
         var validate = new CreateProductRequestValidator();
         var validateErrors = validate.Validate(request).GetErrors();
         if (validateErrors.ReportErrors.Any())
-            return validateErrors;
+            return Response.Unprocessable<CreateProductResponse>(validateErrors.ReportErrors);
 
         try
         {
             var productEntity = _mapper.Map<ProductEntity>(request);
-            await _productService.CreateAsync(productEntity);
+            var response = await _productService.CreateAsync(productEntity);
 
-            return Response.OK();
+            CreateProductResponse responseOk = new() { Id = response.Data };
+
+            return Response.OK(responseOk);
         }
         catch (Exception e)
         {
             var responseError = ReportError.Create(e.Message);
-            return Response.Unprocessable(responseError);
+            return Response.Unprocessable<CreateProductResponse>(responseError);
         }
     }
 
@@ -47,7 +49,7 @@ public class ProductApplication : IProductApplication
         try
         {
             var exists = await _productService.GetByIdAsync(id);
-            if (exists.Data.Id > 0)
+            if (exists.Data is null || exists.Data.Id == 0)
             {
                 return Response.Unprocessable(ReportError.Create($"Product {id} not found."));
             }
@@ -104,12 +106,6 @@ public class ProductApplication : IProductApplication
 
         try
         {
-            var exists = await _productService.GetByIdAsync(request.Id);
-            if (exists.Data.Id > 0)
-            {
-                return Response.Unprocessable(ReportError.Create($"Product {request.Id} not found."));
-            }
-
             var productEntity = _mapper.Map<ProductEntity>(request);
 
             return await _productService.UpdateAsync(productEntity);
