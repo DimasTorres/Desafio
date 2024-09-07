@@ -17,7 +17,7 @@ public class OrderApplication : IOrderApplication
     private readonly IUserService _userService;
     private readonly IProductService _productService;
     private readonly IOrderItemService _orderItemService;
-    private readonly ITotalAmountStrategy _totalAmountStrategy;
+    private readonly ICalculateStrategy _totalAmountStrategy;
     private readonly IMapper _mapper;
 
     public OrderApplication(
@@ -25,7 +25,7 @@ public class OrderApplication : IOrderApplication
         IUserService userService,
         IProductService productService,
         IOrderItemService orderItemService,
-        ITotalAmountStrategy totalAmountStrategy,
+        ICalculateStrategy totalAmountStrategy,
         IMapper mapper)
     {
         _orderService = orderService;
@@ -45,26 +45,11 @@ public class OrderApplication : IOrderApplication
 
         try
         {
-            List<ReportError> reportErrors = new();
             List<OrderItemEntity> orderItems = new();
             foreach (var item in request.OrderItems)
             {
-                var exists = await _productService.GetByIdAsync(item.ProductId);
-                if (exists.Data is null || exists.Data.Id == 0)
-                {
-                    reportErrors.Add(ReportError.Create($"Product {item.ProductId} not found."));
-                }
-                else
-                {
-                    var product = await _productService.GetByIdAsync(item.ProductId);
-
-                    var orderItem = _mapper.Map<OrderItemEntity>(item);
-                }
-            }
-
-            if (reportErrors.Any())
-            {
-                return Response.Unprocessable<CreateOrderResponse>(reportErrors);
+                var orderItem = _mapper.Map<OrderItemEntity>(item);
+                orderItems.Add(orderItem);
             }
 
             var orderEntity = new OrderEntity()
@@ -103,7 +88,6 @@ public class OrderApplication : IOrderApplication
             {
                 order.TotalAmount = _totalAmountStrategy.CalculateTotalAmount(order.OrderItems);
             }
-
 
             return Response.OK(response);
         }

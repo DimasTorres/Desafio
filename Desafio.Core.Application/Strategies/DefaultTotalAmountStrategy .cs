@@ -4,7 +4,7 @@ using Desafio.Core.Domain.Entities;
 
 namespace Desafio.Core.Application.Strategies;
 
-public class DefaultTotalAmountStrategy : ITotalAmountStrategy
+public class DefaultCalculateStrategy : ICalculateStrategy
 {
     public decimal CalculateTotalAmount(List<OrderItemEntity> orderItems)
     {

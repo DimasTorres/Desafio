@@ -114,7 +114,11 @@ public class UserApplication : IUserApplication
     {
         try
         {
-            return await _userService.GetByIdAsync(id);
+            var result = await _userService.GetByIdAsync(id);
+
+            var response = _mapper.Map<UserResponse>(result.Data);
+
+            return Response.OK(response);
         }
         catch (Exception e)
         {

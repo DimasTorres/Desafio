@@ -28,7 +28,7 @@ public static class ConfigurationIoC
         services.AddScoped<IUserApplication, UserApplication>();
 
         //Add Strategies
-        services.AddTransient<ITotalAmountStrategy, DefaultTotalAmountStrategy>();
+        services.AddTransient<ICalculateStrategy, DefaultCalculateStrategy>();
 
         //Add Services
         services.AddScoped<IOrderService, OrderService>();

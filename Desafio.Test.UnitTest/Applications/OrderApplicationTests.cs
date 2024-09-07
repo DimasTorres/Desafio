@@ -16,7 +16,7 @@ public class OrderApplicationTests
     private readonly IUserService _userService;
     private readonly IProductService _productService;
     private readonly IOrderItemService _orderItemService;
-    private readonly ITotalAmountStrategy _totalAmountStrategy;
+    private readonly ICalculateStrategy _totalAmountStrategy;
     private readonly IMapper _mapper;
     private readonly OrderApplication _orderApplication;
 
@@ -26,7 +26,7 @@ public class OrderApplicationTests
         _userService = Substitute.For<IUserService>();
         _productService = Substitute.For<IProductService>();
         _orderItemService = Substitute.For<IOrderItemService>();
-        _totalAmountStrategy = Substitute.For<ITotalAmountStrategy>();
+        _totalAmountStrategy = Substitute.For<ICalculateStrategy>();
         _mapper = Substitute.For<IMapper>();
 
         _orderApplication = new OrderApplication(
