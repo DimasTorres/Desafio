@@ -1,27 +1,36 @@
 services:
   desafio.presentation.api:
-    image: ${DOCKER_REGISTRY-}desafiopresentationapi
-    container_name: Desafio.Presentation.API_1
+    image: dimastorres/desafiopresentationapi
+    container_name: desafio-api
     build:
       context: .
       dockerfile: Desafio.Presentation.API/Dockerfile
     ports:
-        - "5000:5000"
-        - "5001:5001"
-
-  mssql:
-    container_name: mssql-db
-    hostname: mssql-db
-    image: mcr.microsoft.com/mssql/server:2022-latest
+      - 32780:8080
     environment:
-      ACCEPT_EULA: 'Y'
-      MSSQL_SA_PASSWORD: 'Senha@123'
-      MSSQL_DATA_DIR: /var/opt/mssql/data
-      MSSQL_PID: 'Developer' 
-      MSSQL_TCP_PORT: 1433 
-    ports: 
-      - "1433:1433"
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on: ["desafio-db"]
+    networks:
+      desafio-networks:
+
+  desafio-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql-server
+    environment:
+      - "ACCEPT_EULA=1"
+      - "MSSQL_SA_PASSWORD=Senha@123"
+    ports:
+      - 1200:1433
     volumes:
-      - ./data:/var/opt/mssql/data
-      - ./log:/var/opt/mssql/log
-      - ./secrets:/var/opt/mssql/secrets
+      - "desafio-db-mssql-server:/var/opt/mssql"
+    networks:
+       desafio-networks:
+         aliases:
+            - "sqlserver"     
+
+volumes:
+  desafio-db-mssql-server:
+    
+networks:
+  desafio-networks:
+    driver: bridge

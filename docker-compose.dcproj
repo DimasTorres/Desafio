@@ -4,7 +4,7 @@
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
     <DockerPublishLocally>False</DockerPublishLocally>
-    <ProjectGuid>c10c30c0-101f-4ce8-88a1-19c7f3b24384</ProjectGuid>
+    <ProjectGuid>77da9b0a-2301-4bbb-a755-502e5e352aa7</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>desafio.presentation.api</DockerServiceName>
