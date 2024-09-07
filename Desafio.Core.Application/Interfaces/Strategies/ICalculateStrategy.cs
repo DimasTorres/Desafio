@@ -3,7 +3,7 @@ using Desafio.Core.Domain.Entities;
 
 namespace Desafio.Core.Application.Interfaces.Strategies;
 
-public interface ITotalAmountStrategy
+public interface ICalculateStrategy
 {
     decimal CalculateTotalAmount(List<OrderItemEntity> orderItems);
     decimal CalculateTotalAmount(List<OrderItemResponse> orderItems);

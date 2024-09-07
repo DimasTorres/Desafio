@@ -11,6 +11,7 @@ public static class OrderStatements
               ,o.IsPaid
               ,u.Id
               ,u.Name
+              ,u.Email
           FROM [dbo].[Orders] o
           INNER JOIN [dbo].[Users] u ON o.UserId = u.id
           WHERE o.IsDeleted = 0 ";
