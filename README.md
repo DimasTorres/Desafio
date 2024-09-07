@@ -29,7 +29,8 @@ O projeto foi desenvolvido seguindo princípios de design de software como Domai
 - **SOLID**: Conjunto de princípios de design orientado a objetos que visa criar sistemas mais compreensíveis, flexíveis e com menos dependências.
 - **Clean Code**: Práticas de escrita de código limpo, legível e sustentável, facilitando a manutenção e evolução do projeto.
 - **API Rest**: Estilo arquitetural para comunicação entre sistemas, utilizando HTTP e padrões de URL para interações com recursos.
-
+- **Unit of Work**: conceito utilizado em sistemas de persistência de dados para gerenciar transações de forma eficiente e consistente.
+  
 ## Testes
 
 - **xUnit**: Framework de teste utilizado para executar testes unitários na aplicação, garantindo o funcionamento correto das funcionalidades.
