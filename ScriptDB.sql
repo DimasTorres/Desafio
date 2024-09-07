@@ -34,8 +34,10 @@ CREATE TABLE Orders (
     ClientName VARCHAR(60) NOT NULL,
     ClientEmail VARCHAR(60) NOT NULL,
     IsPaid BIT DEFAULT 0,
+	UserId INT NOT NULL,
     IsDeleted BIT DEFAULT 0,
-    CreatedAt DATETIME DEFAULT GETDATE()
+    CreatedAt DATETIME DEFAULT GETDATE(),
+	FOREIGN KEY (UserId) REFERENCES Users(Id),
 );
 GO
 
