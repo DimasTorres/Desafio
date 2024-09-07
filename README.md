@@ -41,3 +41,8 @@ O projeto foi desenvolvido seguindo princípios de design de software como Domai
 1. **Clone o Repositório**:
    ```bash
    git clone https://github.com/DimasTorres/Desafio.git
+
+## Extras
+
+1. **Script do Banco de Dados DesafioDB**: https://github.com/DimasTorres/Desafio/blob/master/ScriptDB.sql
+2. **Collection Postman DesafioApi**: https://github.com/DimasTorres/Desafio/blob/master/Desafio%20.Net.postman_collection.json
