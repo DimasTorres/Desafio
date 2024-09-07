@@ -14,7 +14,7 @@ services:
       desafio-networks:
 
   desafio-db:
-    image: mcr.microsoft.com/mssql/server:2022-latest
+    image: dimastorres/mssql-server-2022
     container_name: mssql-server
     environment:
       - "ACCEPT_EULA=1"
