@@ -30,7 +30,7 @@ public class TokenManager : ITokenManager
 
         var securityToken = tokenHandler.CreateToken(new SecurityTokenDescriptor()
         {
-            Issuer = "praticanet",
+            Issuer = "desafionet",
             IssuedAt = date,
             NotBefore = date,
             Expires = expire,

@@ -2,6 +2,7 @@
 using Desafio.Core.Application.Interfaces.Applications;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace Desafio.Presentation.API.Controllers;
 
