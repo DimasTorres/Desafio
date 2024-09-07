@@ -44,5 +44,5 @@ O projeto foi desenvolvido seguindo princípios de design de software como Domai
 
 ## Extras
 
-1. **Script do Banco de Dados DesafioDB**: https://github.com/DimasTorres/Desafio/blob/master/ScriptDB.sql
-2. **Collection Postman DesafioApi**: https://github.com/DimasTorres/Desafio/blob/master/Desafio%20.Net.postman_collection.json
+1. **Script do Banco de Dados DesafioDB**: [Script DB](https://github.com/DimasTorres/Desafio/blob/master/ScriptDB.sql)
+2. **Collection Postman DesafioApi**: [Collection](https://github.com/DimasTorres/Desafio/blob/master/Desafio%20.Net.postman_collection.json)
