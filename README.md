@@ -66,8 +66,11 @@ O projeto foi desenvolvido seguindo princípios de design de software como Domai
       ![image](https://github.com/user-attachments/assets/74afd33c-6623-4966-aa2c-02ff1fbb2d8d)
 
     - Adicione aos parametros Authorization dos enpoints no Postman, com o Auth Type Bearer Token, no campo Token o valor copiado e clique no botão SEND
+      ![image](https://github.com/user-attachments/assets/9532a834-587c-464f-924d-ce08aa3c0c53)
+
       - ou
     - No Swagger da Api clique no botão **Authorize**, no campo value adicione a palavra "Bearer", de um espaço, cole o valor copiado de Token e clique em Authorize.
+      ![image](https://github.com/user-attachments/assets/e43cbc33-45c4-41c2-b5bb-45bdb5769ae5)
 
 5. **Teste à vontade**:
     - E vamos conversar. 
