@@ -42,6 +42,28 @@ O projeto foi desenvolvido seguindo princípios de design de software como Domai
    ```bash
    git clone https://github.com/DimasTorres/Desafio.git
 
+2. **Docker compose**
+  - Execute o projeto pelo Docker compose
+    
+3. **Banco de Dados**:
+   - a instancia do MSSQL Server já foi gerada pelo docker compose
+   - Usuário "sa", senha "Senha@123"
+   - É necessário executar o [Script DB](https://github.com/DimasTorres/Desafio/blob/master/ScriptDB.sql), para criação do Banco de Dados DesafioDB, suas tabelas e primeiro registros
+
+4. **Autenticação**:
+    - Usando o Postman ou direto na API, realize uma chamada ao endpoint **/api/user/auth**, enviado no corpo da mensagem os parametros **"login": "dgduarte"** e **"password": "Senha@123"**, como no exemplo abaixo.
+      ![image](https://github.com/user-attachments/assets/5eb96057-bf38-4a0e-ab4b-c054cedde475)
+   
+    - Cópie o conteúdo de Token do response.
+      ![image](https://github.com/user-attachments/assets/74afd33c-6623-4966-aa2c-02ff1fbb2d8d)
+
+    - Adicione aos parametros Authorization dos enpoints no Postman, com o Auth Type Bearer Token, no campo Token o valor copiado e clique no botão SEND
+      ou
+      No Swagger da Api clique no botão **Authorize**, no campo value adicione a palavra "Bearer", de um espaço, cole o valor copiado de Token e clique em Authorize.
+
+5. **Teste à vontade**:
+    - E vamos conversar. 
+      
 ## Extras
 
 1. **Script do Banco de Dados DesafioDB**: [Script DB](https://github.com/DimasTorres/Desafio/blob/master/ScriptDB.sql)
