@@ -63,7 +63,12 @@ O projeto foi desenvolvido seguindo princípios de design de software como Domai
 
 5. **Teste à vontade**:
     - E vamos conversar. 
-      
+
+## Observações
+. Tanto o código quanto as requisições e respostas da API estão em inglês, só o título e esse README em português (rs)
+. Os testes unitários e o algoritimo de criptografia da senha do usuário foram gerados pela IA Generativa GPT-4o da Sai-Library da Stefanini, algumas correções foram necessárias, mas ajudou bastante
+. Já existia um pré-projeto com algumas coisas já implementadas, pricipalmente o que estava realcionado ao uso do Dapper, do JWT Bearer e os padrões de Response usando Data e ReportErrors, por isso achei interesse usar esses padrões. Com isso acabei não criando o banco com o Entity Framework Core, o que acabou gerando a necessidade de executar um script para o banco de dados. 
+
 ## Extras
 
 1. **Script do Banco de Dados DesafioDB**: [Script DB](https://github.com/DimasTorres/Desafio/blob/master/ScriptDB.sql)
