@@ -48,7 +48,7 @@ O projeto foi desenvolvido seguindo princípios de design de software como Domai
 3. **Banco de Dados**:
    - a instancia do MSSQL Server já foi gerada pelo docker compose
    - Usuário "sa", senha "Senha@123"
-   - É necessário executar o [Script DB](https://github.com/DimasTorres/Desafio/blob/master/ScriptDB.sql), para criação do Banco de Dados DesafioDB, suas tabelas e primeiro registros
+   - as tabelas **Users**, **Products**, **Order** e **OrderItems** foram criadas e previamente populadas via script na inicialização da aplicação
 
 4. **Autenticação**:
     - Usando o Postman ou direto na API, realize uma chamada ao endpoint **/api/user/auth**, enviado no corpo da mensagem os parametros **"login": "dgduarte"** e **"password": "Senha@123"**, como no exemplo abaixo.
@@ -65,11 +65,14 @@ O projeto foi desenvolvido seguindo princípios de design de software como Domai
     - E vamos conversar. 
 
 ## Observações
-1. Tanto o código quanto as requisições e respostas da API estão em inglês, só o título e esse README em português (rs)
-2. Os testes unitários e o algoritimo de criptografia da senha do usuário foram gerados pela IA Generativa GPT-4o da Sai-Library da Stefanini, algumas correções foram necessárias, mas ajudou bastante
-3. Já existia um pré-projeto com algumas coisas já implementadas, pricipalmente o que estava realcionado ao uso do Dapper, do JWT Bearer e os padrões de Response usando Data e ReportErrors, por isso achei interesse usar esses padrões. Com isso acabei não criando o banco com o Entity Framework Core, o que acabou gerando a necessidade de executar um script para o banco de dados. 
+1. Tanto o código quanto as requisições e respostas da API estão em inglês, só o título e esse README em português (rs).
+2. Os testes unitários e o algoritimo de criptografia da senha do usuário foram gerados pela IA Generativa GPT-4o da Sai-Library da Stefanini, algumas correções foram necessárias, mas ajudou bastante.
+3. Usei o Dapper, o JWT Bearer e os padrões de Response usando Data e ReportErrors, por considerar esses padrões mais utilizados ultimamente. Com isso acabei não criando o banco com o Entity Framework Core, o que acabou gerando a necessidade de executar um script para o banco de dados na inicialização da API. 
 
 ## Extras
 
-1. **Script do Banco de Dados DesafioDB**: [Script DB](https://github.com/DimasTorres/Desafio/blob/master/ScriptDB.sql)
-2. **Collection Postman DesafioApi**: [Collection](https://github.com/DimasTorres/Desafio/blob/master/Desafio%20.Net.postman_collection.json)
+1. **Collection Postman DesafioApi**: [Collection](https://github.com/DimasTorres/Desafio/blob/master/Desafio%20.Net.postman_collection.json)
+2. **Repositorio da imagem da aplicação e do banco de dados no Docker Hub**:
+    ```bash
+      docker pull dimastorres/desafiopresentationapi
+      docker pull dimastorres/mssql-server-2022
