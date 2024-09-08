@@ -65,9 +65,9 @@ O projeto foi desenvolvido seguindo princípios de design de software como Domai
     - E vamos conversar. 
 
 ## Observações
-. Tanto o código quanto as requisições e respostas da API estão em inglês, só o título e esse README em português (rs)
-. Os testes unitários e o algoritimo de criptografia da senha do usuário foram gerados pela IA Generativa GPT-4o da Sai-Library da Stefanini, algumas correções foram necessárias, mas ajudou bastante
-. Já existia um pré-projeto com algumas coisas já implementadas, pricipalmente o que estava realcionado ao uso do Dapper, do JWT Bearer e os padrões de Response usando Data e ReportErrors, por isso achei interesse usar esses padrões. Com isso acabei não criando o banco com o Entity Framework Core, o que acabou gerando a necessidade de executar um script para o banco de dados. 
+1. Tanto o código quanto as requisições e respostas da API estão em inglês, só o título e esse README em português (rs)
+2. Os testes unitários e o algoritimo de criptografia da senha do usuário foram gerados pela IA Generativa GPT-4o da Sai-Library da Stefanini, algumas correções foram necessárias, mas ajudou bastante
+3. Já existia um pré-projeto com algumas coisas já implementadas, pricipalmente o que estava realcionado ao uso do Dapper, do JWT Bearer e os padrões de Response usando Data e ReportErrors, por isso achei interesse usar esses padrões. Com isso acabei não criando o banco com o Entity Framework Core, o que acabou gerando a necessidade de executar um script para o banco de dados. 
 
 ## Extras
 
