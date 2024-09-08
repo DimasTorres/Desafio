@@ -43,18 +43,17 @@ O projeto foi desenvolvido seguindo princípios de design de software como Domai
    git clone https://github.com/DimasTorres/Desafio.git
 
 2. **Docker compose**:
-    - Execute o projeto pelo comando Docker compose ou no visual studio na mesma opção 
+    - Execute o projeto pelo comando do Docker Compose ou no Visual Studio na mesma opção.
     ```bash
     docker-compose build
     docker-compose up
 
   ![image](https://github.com/user-attachments/assets/841f865d-7d4d-4e8e-a620-930689d8e518)
 
-
 3. **Banco de Dados**:
-   - A instancia do MSSQL Server já foi gerada pelo docker compose
-   - Usuário "sa", senha "Senha@123"
-   - As tabelas **Users**, **Products**, **Order** e **OrderItems** foram criadas e previamente populadas via script na inicialização da aplicação
+   - A instancia do MSSQL Server já foi gerada pelo docker compose.
+   - Usuário "sa", senha "Senha@123".
+   - As tabelas **Users**, **Products**, **Order** e **OrderItems** foram criadas e previamente populadas via script na inicialização da aplicação.
 
 4. **Acessar a Documentação da API**:
    - Acesse o Swagger na URL: http://localhost:{porta}/swagger para visualizar e interagir com a documentação da API.
