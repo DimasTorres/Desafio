@@ -59,14 +59,18 @@ O projeto foi desenvolvido seguindo princípios de design de software como Domai
    - Acesse o Swagger na URL: http://localhost:{porta}/swagger para visualizar e interagir com a documentação da API.
    
 5. **Autenticação**:
-    - Usando o Postman ou direto na API, realize uma chamada ao endpoint **/api/user/auth**, enviado no corpo da mensagem os parametros **"login": "dgduarte"** e **"password": "Senha@123"**, como no exemplo abaixo.
-      ![image](https://github.com/user-attachments/assets/5eb96057-bf38-4a0e-ab4b-c054cedde475)
+    - Usando o Postman ou direto na API, realize uma chamada ao endpoint **/api/user/auth**, enviado no corpo da mensagem os parametros **"login": "dgduarte"** e **"password": "Senha@123"**, como nos exemplos abaixo.
+      ***Postman***
+      ![image](https://github.com/user-attachments/assets/2555cbac-e192-472e-981b-8c72c89c0880)
+
+     ***Swagger**
+      ![image](https://github.com/user-attachments/assets/adb0f125-6122-419f-b5d4-7a5fdc6fce8d)
    
     - Cópie o conteúdo de Token do response.
       ![image](https://github.com/user-attachments/assets/74afd33c-6623-4966-aa2c-02ff1fbb2d8d)
 
     - Adicione aos parametros Authorization dos enpoints no Postman, com o Auth Type Bearer Token, no campo Token o valor copiado e clique no botão SEND
-      ![image](https://github.com/user-attachments/assets/9532a834-587c-464f-924d-ce08aa3c0c53)
+      ![image](https://github.com/user-attachments/assets/58e090f0-7e8c-4841-8134-997922a3d9de)
 
       - ou
     - No Swagger da Api clique no botão **Authorize**, no campo value adicione a palavra "Bearer", de um espaço, cole o valor copiado de Token e clique em Authorize.
