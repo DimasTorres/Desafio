@@ -23,4 +23,11 @@
     <ProjectReference Include="..\Desafio.Infrastructure.Persistence\Desafio.Infrastructure.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Scripts\CreateDatabase.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+
 </Project>
