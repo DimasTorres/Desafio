@@ -100,38 +100,39 @@ O projeto foi desenvolvido seguindo princípios de design de software como Domai
 ## Conclusão
 
 Nas minhas máquinas funciona, espero que nas suas também.
-{
-  "data": {
-    "id": 1,
-    "clientName": "Cliente 1",
-    "clientEmail": "cliente1@client.com",
-    "isPaid": true,
-    "totalAmount": 106.19,
-    "user": {
-      "id": 1,
-      "name": "Dimas Duarte",
-      "email": "dgduarte@stefanini.com"
-    },
-    "orderItems": [
-      {
+  ```Json
+    {
+      "data": {
         "id": 1,
-        "product": {
+        "clientName": "Cliente 1",
+        "clientEmail": "cliente1@client.com",
+        "isPaid": true,
+        "totalAmount": 106.19,
+        "user": {
           "id": 1,
-          "productName": "Produto 1",
-          "value": 10.55
+          "name": "Dimas Duarte",
+          "email": "dgduarte@stefanini.com"
         },
-        "amount": 10
+        "orderItems": [
+          {
+            "id": 1,
+            "product": {
+              "id": 1,
+              "productName": "Produto 1",
+              "value": 10.55
+            },
+            "amount": 10
+          },
+          {
+            "id": 2,
+            "product": {
+              "id": 4,
+              "productName": "Produto 4",
+              "value": 0.69
+            },
+            "amount": 1
+          }
+        ]
       },
-      {
-        "id": 2,
-        "product": {
-          "id": 4,
-          "productName": "Produto 4",
-          "value": 0.69
-        },
-        "amount": 1
-      }
-    ]
-  },
-  "reportErrors": []
-}
+      "reportErrors": []
+    }
