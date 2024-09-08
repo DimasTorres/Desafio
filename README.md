@@ -43,14 +43,20 @@ O projeto foi desenvolvido seguindo princípios de design de software como Domai
    git clone https://github.com/DimasTorres/Desafio.git
 
 2. **Docker compose**:
-  - Execute o projeto pelo Docker compose
-    
-3. **Banco de Dados**:
-   - a instancia do MSSQL Server já foi gerada pelo docker compose
-   - Usuário "sa", senha "Senha@123"
-   - as tabelas **Users**, **Products**, **Order** e **OrderItems** foram criadas e previamente populadas via script na inicialização da aplicação
+  - Execute o projeto pelo comando Docker compose ou no visual studio na mesma opção 
+    ```bash
+    docker-compose build
+    docker-compose up
 
-4. **Autenticação**:
+3. **Banco de Dados**:
+   - A instancia do MSSQL Server já foi gerada pelo docker compose
+   - Usuário "sa", senha "Senha@123"
+   - As tabelas **Users**, **Products**, **Order** e **OrderItems** foram criadas e previamente populadas via script na inicialização da aplicação
+
+4. **Acessar a Documentação da API**:
+   - Acesse o Swagger na URL: http://localhost:{porta}/swagger para visualizar e interagir com a documentação da API.
+   
+5. **Autenticação**:
     - Usando o Postman ou direto na API, realize uma chamada ao endpoint **/api/user/auth**, enviado no corpo da mensagem os parametros **"login": "dgduarte"** e **"password": "Senha@123"**, como no exemplo abaixo.
       ![image](https://github.com/user-attachments/assets/5eb96057-bf38-4a0e-ab4b-c054cedde475)
    
@@ -59,7 +65,7 @@ O projeto foi desenvolvido seguindo princípios de design de software como Domai
 
     - Adicione aos parametros Authorization dos enpoints no Postman, com o Auth Type Bearer Token, no campo Token o valor copiado e clique no botão SEND
       ou
-      No Swagger da Api clique no botão **Authorize**, no campo value adicione a palavra "Bearer", de um espaço, cole o valor copiado de Token e clique em Authorize.
+    - No Swagger da Api clique no botão **Authorize**, no campo value adicione a palavra "Bearer", de um espaço, cole o valor copiado de Token e clique em Authorize.
 
 5. **Teste à vontade**:
     - E vamos conversar. 
