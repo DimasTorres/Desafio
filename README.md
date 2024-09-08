@@ -42,7 +42,7 @@ O projeto foi desenvolvido seguindo princípios de design de software como Domai
    ```bash
    git clone https://github.com/DimasTorres/Desafio.git
 
-2. **Docker compose**
+2. **Docker compose**:
   - Execute o projeto pelo Docker compose
     
 3. **Banco de Dados**:
