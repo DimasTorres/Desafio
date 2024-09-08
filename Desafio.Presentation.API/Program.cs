@@ -25,6 +25,13 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+// Executar o inicializador de banco de dados
+using (var scope = app.Services.CreateScope())
+{
+    var dbInitializer = scope.ServiceProvider.GetRequiredService<DatabaseInitializer>();
+    await dbInitializer.InitializeDatabaseAsync();
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

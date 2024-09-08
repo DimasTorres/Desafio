@@ -8,6 +8,9 @@ public static class ConfigurationDB
     {
         //Add Connection DB
         var defaultConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-        builder.Services.AddScoped<IDbConnector>(db => new SqlConnection(defaultConnectionString!));        
+        builder.Services.AddScoped<IDbConnector>(db => new SqlConnection(defaultConnectionString!));
+
+        // Adicionar serviços ao container
+        builder.Services.AddSingleton<DatabaseInitializer>();
     }
 }
