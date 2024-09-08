@@ -99,7 +99,7 @@ O projeto foi desenvolvido seguindo princípios de design de software como Domai
 
 ## Conclusão
 
-Nas minhas máquinas funciona, espero que nas suas também.
+Quero agradece a oportunidade e espero ter atendido a maioria das exigências para o desafio. Ainda tenho muito a aprender, mas não falta empenho e determinação para isso. No mais, na minha máquina funciona, espero que nas suas também. Valeu!!!
   ```Json
     {
       "data": {
