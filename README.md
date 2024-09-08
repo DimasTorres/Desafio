@@ -60,10 +60,10 @@ O projeto foi desenvolvido seguindo princípios de design de software como Domai
    
 5. **Autenticação**:
     - Usando o Postman ou direto na API, realize uma chamada ao endpoint **/api/user/auth**, enviado no corpo da mensagem os parametros **"login": "dgduarte"** e **"password": "Senha@123"**, como nos exemplos abaixo.
-      ***Postman***
+      - ***Postman***
       ![image](https://github.com/user-attachments/assets/2555cbac-e192-472e-981b-8c72c89c0880)
 
-     ***Swagger**
+     - ***Swagger**
       ![image](https://github.com/user-attachments/assets/adb0f125-6122-419f-b5d4-7a5fdc6fce8d)
    
     - Cópie o conteúdo de Token do response.
