@@ -43,7 +43,7 @@ O projeto foi desenvolvido seguindo princípios de design de software como Domai
    git clone https://github.com/DimasTorres/Desafio.git
 
 2. **Docker compose**:
-  - Execute o projeto pelo comando Docker compose ou no visual studio na mesma opção 
+    - Execute o projeto pelo comando Docker compose ou no visual studio na mesma opção 
     ```bash
     docker-compose build
     docker-compose up
