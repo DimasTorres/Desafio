@@ -84,6 +84,7 @@ O projeto foi desenvolvido seguindo princípios de design de software como Domai
     - E vamos conversar. 
 
 ## Observações
+
 1. Tanto o código quanto as requisições e respostas da API estão em inglês, só o título e esse README em português (rs).
 2. Os testes unitários e o algoritimo de criptografia da senha do usuário foram gerados pela IA Generativa GPT-4o da Sai-Library da Stefanini, algumas correções foram necessárias, mas ajudou bastante.
 3. Usei o Dapper, o JWT Bearer e os padrões de Response usando Data e ReportErrors, por considerar esses padrões mais utilizados ultimamente. Com isso acabei não criando o banco com o Entity Framework Core, o que acabou gerando a necessidade de executar um script para o banco de dados na inicialização da API. 
@@ -95,3 +96,42 @@ O projeto foi desenvolvido seguindo princípios de design de software como Domai
     ```bash
       docker pull dimastorres/desafiopresentationapi
       docker pull dimastorres/mssql-server-2022
+
+## Conclusão
+
+Nas minhas máquinas funciona, espero que nas suas também.
+{
+  "data": {
+    "id": 1,
+    "clientName": "Cliente 1",
+    "clientEmail": "cliente1@client.com",
+    "isPaid": true,
+    "totalAmount": 106.19,
+    "user": {
+      "id": 1,
+      "name": "Dimas Duarte",
+      "email": "dgduarte@stefanini.com"
+    },
+    "orderItems": [
+      {
+        "id": 1,
+        "product": {
+          "id": 1,
+          "productName": "Produto 1",
+          "value": 10.55
+        },
+        "amount": 10
+      },
+      {
+        "id": 2,
+        "product": {
+          "id": 4,
+          "productName": "Produto 4",
+          "value": 0.69
+        },
+        "amount": 1
+      }
+    ]
+  },
+  "reportErrors": []
+}
