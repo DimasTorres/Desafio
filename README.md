@@ -48,6 +48,9 @@ O projeto foi desenvolvido seguindo princípios de design de software como Domai
     docker-compose build
     docker-compose up
 
+  ![image](https://github.com/user-attachments/assets/841f865d-7d4d-4e8e-a620-930689d8e518)
+
+
 3. **Banco de Dados**:
    - A instancia do MSSQL Server já foi gerada pelo docker compose
    - Usuário "sa", senha "Senha@123"
